@@ -37,3 +37,4 @@ class Locators:
     FILLINGS_SECTION = (By.XPATH, '//h2[text()="Начинки"]') #Раздел "Начинки"
 
 
+

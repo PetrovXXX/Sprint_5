@@ -1,28 +1,36 @@
 import pytest
 from selenium import webdriver
 from data import Credentials
+from helper import generate_registration_data
+import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from locators import Locators
+from selenium.common.exceptions import WebDriverException
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def driver():
-    #Фикстура для инициализации и закрытия браузера
+    # Инициализация веб-драйвера
     driver = webdriver.Chrome()
     yield driver
     driver.quit()
 
+@pytest.fixture
+def login_data():
+    # Используем класс Credentials для получения данных для входа
+    credentials = Credentials()
+    email, password = credentials.login()
+    return email, password
 
 @pytest.fixture
-def register_new_user(driver):
-    driver.get("https://stellarburgers.nomoreparties.site/register")
-    name, email, password = Credentials()
+def registration_data():
+    # Генерация данных для регистрации
+    name, email, password = generate_registration_data()
+    return name, email, password
 
-    driver.find_element(*Locators.REG_NAME_FIELD).send_keys(name)
-    driver.find_element(*Locators.REG_EMAIL_FIELD).send_keys(email)
-    driver.find_element(*Locators.REG_PASSWORD_FIELD).send_keys(password)
-    driver.find_element(*Locators.REG_SUBMIT_BUTTON).click()
+@pytest.fixture
+def registration_not_successful():
+    # Используем класс Credentials для получения данных для регистрации
+    credentials = Credentials()
+    name, email, password = credentials.registration_was_not_successful()
+    return name, email, password
 
-    WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Locators.LOGIN_HEADER))
-
-    return {"email": email, "password": password, "name": name}
