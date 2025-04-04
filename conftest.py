@@ -2,10 +2,6 @@ import pytest
 from selenium import webdriver
 from data import Credentials
 from helper import generate_registration_data
-import pytest
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import WebDriverException
 
 @pytest.fixture(scope="function")
 def driver():

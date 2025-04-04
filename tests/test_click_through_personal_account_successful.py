@@ -1,7 +1,7 @@
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from conftest import driver
+
 from locators import Locators
 
 class TestClickButonPersonalAccount:

@@ -12,6 +12,7 @@ class TestAuthorization:
         driver.find_element(*Locators.PASSWORD_INPUT).send_keys(password)
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable(Locators.LOGIN_BUTTON)).click()
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable(Locators.BUTTON_ACCOUNT_SECTION)).click()
+
         WebDriverWait(driver, 10).until(EC.url_contains("/account/profile"))
         assert "/account/profile" in driver.current_url
 
@@ -24,6 +25,7 @@ class TestAuthorization:
         driver.find_element(*Locators.PASSWORD_INPUT).send_keys(password)
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable(Locators.LOGIN_BUTTON)).click()
         WebDriverWait(driver, 15).until(EC.element_to_be_clickable(Locators.BUTTON_ACCOUNT_SECTION)).click()
+
         WebDriverWait(driver, 15).until(EC.url_contains("/account/profile"))
         assert "/account/profile" in driver.current_url
 
@@ -36,6 +38,7 @@ class TestAuthorization:
         driver.find_element(*Locators.PASSWORD_INPUT).send_keys(password)
         WebDriverWait(driver, 15).until(EC.element_to_be_clickable(Locators.LOGIN_BUTTON)).click()
         WebDriverWait(driver, 15).until(EC.element_to_be_clickable(Locators.BUTTON_ACCOUNT_SECTION)).click()
+
         WebDriverWait(driver, 15).until(EC.url_contains("/account/profile"))
         assert "/account/profile" in driver.current_url
 
@@ -48,5 +51,6 @@ class TestAuthorization:
         driver.find_element(*Locators.PASSWORD_INPUT).send_keys(password)
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable(Locators.LOGIN_BUTTON)).click()
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable(Locators.BUTTON_ACCOUNT_SECTION)).click()
+
         WebDriverWait(driver, 10).until(EC.url_contains("/account/profile"))
         assert "/account/profile" in driver.current_url
